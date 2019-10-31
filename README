@@ -1,0 +1,8 @@
+This repo will be a good place for me to practice AI.
+
+### Directory Structure
+
+This is a monorepo that shares a `Dockerfile` and `requirements.txt` because it's easier.
+
+- /src/PROJECTNAME is where source code for each project resides
+- /datasets/PROJECTNAME is where each dataset resides
