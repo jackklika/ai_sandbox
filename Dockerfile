@@ -1,10 +1,10 @@
 FROM tensorflow/tensorflow:latest-gpu-py3
 
 # Add all project files to container's root directory
-ADD . /ai_sandbox
+ADD . /opt/
 
 # Install all packages needed for program
-RUN pip3 install -r /ai_sandbox/requirements.txt
+RUN pip3 install -r /opt/requirements.txt
 
 # Update!! 
 RUN apt update -y

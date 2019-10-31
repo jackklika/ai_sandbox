@@ -1,12 +1,36 @@
 # Import `tensorflow`
 import tensorflow as tf
 
-# Initialize two constants
-x1 = tf.constant([1,2,3,4])
-x2 = tf.constant([5,6,7,8])
+import glob
+import errno
 
-# Multiply
-result = tf.multiply(x1, x2)
+from scipy.io import arff
+from io import StringIO
 
-# Print the result
-print(result)
+
+# TODO: Simplify this with some glob wildcards
+paths = [
+        '/opt/datasets/wisdm/arff_files/phone/accel/*.arff',
+        '/opt/datasets/wisdm/arff_files/phone/gyro/*.arff',
+        '/opt/datasets/wisdm/arff_files/watch/accel/*.arff',
+        '/opt/datasets/wisdm/arff_files/watch/gyro/*.arff',
+        ]
+
+for p in paths:
+    files = glob.glob(p)
+    for f in files:
+        try:
+            with open(f) as ff:
+                print(ff)
+                data, meta = arff.loadarff(ff)
+                print(data)
+        except IOError as err:
+            if err.errno != errno.EISDIR:
+                print("error: ", err)
+                raise
+
+
+# /opt/datasets/{phone,watch}/{accel,gyro}
+
+#f = open("/opt/datasets/phone/accel"
+
